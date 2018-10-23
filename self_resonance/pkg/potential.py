@@ -18,18 +18,18 @@ class Potential:
         if(self.name == 'axion_monodromy'):
             return 1.0/np.sqrt(1.0+phi**2)**(3)
         elif(self.name == 'quadratic'):
-            return 1.0
+            return np.ones(np.shape(phi))
         else:
             raise ValueError('Requested potential not found')
 
     def period(self, phimax):
         _phimin = self.phimin()
-        f = lambda phi : np.sqrt(2.0/(self.V(phimax)-self.V(phi)))
+        f = lambda phi : 2.0*np.sqrt(2.0/(self.V(phimax)-self.V(phi)))
         T = quad(f, _phimin, phimax)
         return T[0]
 
     def phimin(self):
-        if(self.name == 'axion_monodromy' || self.name == 'quadratic'):
+        if(self.name == 'axion_monodromy' or self.name == 'quadratic'):
             return 0.0
         else:
             raise ValueError('Requested potential not found')
@@ -49,9 +49,8 @@ class Potential:
         x = odeint(self.system_equations, x0, t, args=(k,))
         return x
 
-    def max_Floquest_exp(self, k, phi_max):
+    def max_Floquet_exp(self, k, phi_max):
         T = self.period(phi_max)
-
         x01 = [1.0, 0.0]
         x02 = [0.0, 1.0]
         y1 = self.integrate(x01, T, k)

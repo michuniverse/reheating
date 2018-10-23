@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
 
-Pot = pot.Potential()
+Pot = pot.Potential('quadratic')
 
 phimax = 1.0
 T = Pot.period(phimax)

@@ -1,5 +1,5 @@
 import sys, os
-pkg_path = os.path.abspath('..')
+pkg_path = os.path.abspath('../pkg/')
 sys.path.append(pkg_path)
 
 import potential as pot
@@ -10,13 +10,13 @@ import matplotlib.pyplot as plt
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
 
-Pot = pot.Potential()
+Pot = pot.Potential('quadratic')
 
 phimax = 1.0
 T = Pot.period(phimax)
 print("The time period for phimax=" + str(phimax) + " is " + str(T) + "\n")
 
-k = 1.0
+k = 0.0
 
 x01 = [1.0, 0]
 y1 = Pot.integrate(x01, T, k)
