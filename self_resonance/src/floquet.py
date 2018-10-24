@@ -8,8 +8,8 @@ import numpy as np
 
 Pot = pot.Potential('axion_monodromy')
 
-k = np.linspace(0.01, 2.0, 200)
-phimax = np.linspace(0.001, 10.0, 200)
+k = np.linspace(0.01, 1.5, 150)
+phimax = np.linspace(0.001, 10.0, 150)
 
 max_FE = np.zeros((len(k), len(phimax)))
 
