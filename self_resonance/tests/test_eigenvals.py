@@ -18,12 +18,12 @@ print("The time period for phimax=" + str(phimax) + " is " + str(T) + "\n")
 
 k = 1.0
 
-x01 = [1.0, 0]
+x01 = [phimax, 0.0, 1.0, 0]
 y1 = Pot.integrate(x01, T, k)
-x02 = [0.0, 1.0]
+x02 = [phimax, 0.0, 0.0, 1.0]
 y2 = Pot.integrate(x02, T, k)
 
-A = np.array([[y1[-1,0], y1[-1,1]],[y2[-1,0], y2[-1,1]]])
+A = np.array([[y1[-1,2], y1[-1,3]],[y2[-1,2], y2[-1,3]]])
 
 Lambda = np.linalg.eigvals(A)
 
